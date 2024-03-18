@@ -70,4 +70,22 @@ public class UsuarioServiceImpl implements UsuarioService {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponseDto(HttpStatus.INTERNAL_SERVER_ERROR.value(),"Error interno del servidor---> ( " + e.getMessage()+" )"));
         }
     }
+
+    @Override
+    public ResponseEntity<ApiResponseDto> refreshToken(String id) {
+        try {
+            Optional<UsuariosModel> usuario = usuarioRepository.findById(id);
+            if (usuario.isPresent()){
+                UsuariosModel usuarioExistente = usuario.get();
+                JwtResponseDto response = new JwtResponseDto(
+                        usuarioExistente.getId(),usuarioExistente.getNombre(),usuarioExistente.getPerfilId().getNombre(),
+                        usuarioExistente.getPerfilId().getId(), this.jwtService.generateToken(usuarioExistente.getCorreo())
+                );
+                return ResponseEntity.status(HttpStatus.OK).body(new ApiResponseDto(HttpStatus.OK.value(), "Token Actualizado",response));
+            }
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponseDto(HttpStatus.BAD_REQUEST.value(), "El usuario con estas credenciales no esta ACTIVO"));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponseDto(HttpStatus.INTERNAL_SERVER_ERROR.value(),"Error interno del servidor---> ( " + e.getMessage()+" )"));
+        }
+    }
 }

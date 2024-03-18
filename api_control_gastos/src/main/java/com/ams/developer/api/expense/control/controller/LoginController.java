@@ -20,4 +20,9 @@ public class LoginController {
         return this.usuarioService.login(loginDto);
     }
 
+    @GetMapping("/auth/token/refresh/{id}")
+    public ResponseEntity<ApiResponseDto> refreshToken(@PathVariable String id){
+        return this.usuarioService.refreshToken(id);
+    }
+
 }

@@ -15,4 +15,6 @@ public interface UsuarioService {
     public ResponseEntity<ApiResponseDto> saveUser(UsuarioDto usuarioDto);
 
     public ResponseEntity<ApiResponseDto> login(LoginDto loginDto);
+
+    public ResponseEntity<ApiResponseDto> refreshToken(String id);
 }
