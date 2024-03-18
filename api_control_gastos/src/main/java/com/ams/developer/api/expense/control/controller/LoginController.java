@@ -2,6 +2,7 @@ package com.ams.developer.api.expense.control.controller;
 
 import com.ams.developer.api.expense.control.dto.ApiResponseDto;
 import com.ams.developer.api.expense.control.dto.LoginDto;
+import com.ams.developer.api.expense.control.dto.UsuarioDto;
 import com.ams.developer.api.expense.control.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,11 @@ public class LoginController {
     @GetMapping("/auth/token/refresh/{id}")
     public ResponseEntity<ApiResponseDto> refreshToken(@PathVariable String id){
         return this.usuarioService.refreshToken(id);
+    }
+
+    @PostMapping("auth/register")
+    public ResponseEntity<ApiResponseDto> registerUser(@RequestBody UsuarioDto usuarioDto){
+        return this.usuarioService.saveUser(usuarioDto);
     }
 
 }

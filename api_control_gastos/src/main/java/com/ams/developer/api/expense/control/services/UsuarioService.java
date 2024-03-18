@@ -12,7 +12,13 @@ public interface UsuarioService {
 
     public UsuariosModel searchByCorreoActive(String correo);
 
+    public ResponseEntity<ApiResponseDto> getAllUsers();
+
+    public ResponseEntity<ApiResponseDto> getUserById(String id);
+
     public ResponseEntity<ApiResponseDto> saveUser(UsuarioDto usuarioDto);
+
+    public ResponseEntity<ApiResponseDto> updateUser(String id, UsuarioDto usuarioDto);
 
     public ResponseEntity<ApiResponseDto> login(LoginDto loginDto);
 
