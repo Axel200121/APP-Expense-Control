@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-gastos-por-dia',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
   templateUrl: './gastos-por-dia.component.html',
   styleUrl: './gastos-por-dia.component.css'
 })
-export class GastosPorDiaComponent {
+export class GastosPorDiaComponent implements OnInit {
+
+  constructor(private _authService:AuthService){}
+
+
+  ngOnInit(): void {
+    this._authService.validateAuth()  
+  }
+
 
 }
