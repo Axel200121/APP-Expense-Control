@@ -61,13 +61,17 @@ export class ProveedoresComponent implements OnInit {
     if(this.modalTitle=="Agrega"){
       this.saveProvider()
     }else if (this.modalTitle=="Modifica") {
-      
+      this.updateProvider()
     }
   }
 
   openSaveModalProvider(){
     this._modalService.open(this.myModalConfig,{size:'lg'});
     this.modalTitle="Agrega"
+    this.providerDto={
+      id: '',
+      nombre: ''
+    }
   }
 
   private saveProvider(){
@@ -82,16 +86,37 @@ export class ProveedoresComponent implements OnInit {
           window.location.href ="/providers"
           this.getAllProviders()
         },1500)
-        this.getAllProviders()
       },error: error =>{
         console.log("Error--> "+ error.message)
       }
     })
   }
 
-  openEditarModalProvider(providerDto:ProveedoresDto){
+  openEditarModalProvider(providerEditDto:ProveedoresDto){
     this._modalService.open(this.myModalConfig,{size:'lg'});
     this.modalTitle="Modifica"
+    this.providerDto={
+      id: providerEditDto.id,
+      nombre: providerEditDto.nombre
+    }
+  }
+
+  private updateProvider(){
+    this._proveedoresService.updateProvider(this.providerDto.id, this.providerDto,this._authService.getToken()).subscribe({
+      next: response =>{
+        swal.fire({
+          icon:'success',
+          title:'OK',
+          text:"Proveedor actulizado correctamente"
+        })
+        setInterval(()=>{
+          window.location.href ="/providers"
+          this.getAllProviders()
+        },1500)
+      },error: error =>{
+        console.log("Error--> "+ error.message)
+      }
+    })
   }
 
 

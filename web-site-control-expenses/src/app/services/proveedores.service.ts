@@ -23,6 +23,12 @@ export class ProveedoresService {
     })
   }
 
+  public updateProvider(id:any, providerDto:ProveedoresDto, token:string):Observable<any>{
+    return this._http.put(`${environment.api}/v1/proveedores/update/${id}`,providerDto,{headers:
+      {'content-type':'application/json','Authorization':`Bearer ${token}`}
+    })
+  }
+
 
 
 

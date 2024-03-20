@@ -63,13 +63,14 @@
 <!--VENATNA MODAL-->
 <ng-template #myModalConfig let-modal>
     <div class="modal-content" style="background-color: #fff;">
-        <div class="modal-header text-white mb-3">
+        <div class="modal-header text-white ">
             <h4 class="modal-title">{{modalTitle}} la información del proveedor</h4>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.close('Cerrado desde la ventana')" title="Cerrar"></button>
         </div>
         <div class="modal-body">
+            <img src="../../../assets/img/proveedor.png" class="rounded mx-auto d-block" style="width: 40%;" alt="...">
             <form name="form" id="form" (submit)="switchForm()" #formulario="ngForm">
-                <div class="mb-3">
+                <div class="mb-5">
                     <label for="nombre">Nombre del proveedor: </label>
                     <input type="text" name="nombre" class="form-control" [(ngModel)]="providerDto.nombre" #nombre="ngModel" required="true" placeholder="Ingrese el nombre del proveedor">
                     @if (nombre.invalid && (nombre.dirty || nombre.touched)) {
