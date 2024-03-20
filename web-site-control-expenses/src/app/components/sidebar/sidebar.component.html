@@ -5,28 +5,21 @@
         </a>
 
         <ul class="sidebar-nav">
-            <li class="sidebar-header">
-                Administración
-            </li>
-
-            <li class="sidebar-item active">
-                <a class="sidebar-link" href="index.html">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" routerLink="/users" >
-                    <i class="align-middle fas fa-users"></i> <span class="align-middle">Usuarios </span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" routerLink="/users" >
-                    <i class="align-middle fas fa-users"></i> <span class="align-middle">Usuarios </span>
-                </a>
-            </li>
-            <li class="sidebar-header">
-                Gastos
-            </li>
+            @if (perfil == "Administrador") {
+                <li class="sidebar-header">Administración</li>
+                <li class="sidebar-item active">
+                    <a class="sidebar-link" href="index.html">
+                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" routerLink="/users">
+                        <i class="align-middle fas fa-users"></i> <span class="align-middle">Usuarios </span>
+                    </a>
+                </li>
+            }
+            
+            <li class="sidebar-header">Gastos</li>
             <li class="sidebar-item">
                 <a class="sidebar-link" routerLink="/providers" >
                     <i class="align-middle fas fa-truck-moving"></i> <span class="align-middle">Proveedores</span>
