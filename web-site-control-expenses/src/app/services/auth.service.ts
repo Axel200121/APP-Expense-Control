@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,24 @@ export class AuthService {
 
   public getPerfil(){
     return this._cookieService.get('perfil_expenses_control')
+  }
+
+  public logout(){
+    swal.fire({
+      position:'top-end',
+      title:'¿Realmente desea cerrar la sesión?',
+      icon:'warning',
+      showCancelButton:true,
+      confirmButtonColor:'#3085d6',
+      cancelButtonColor:'#d33',
+      cancelButtonText:'No',
+      confirmButtonText:'Si'
+    }).then(async (result)=>{
+      if(result.isConfirmed){
+        this._cookieService.deleteAll()
+         window.location.href="/"
+      }
+    })
   }
 
   

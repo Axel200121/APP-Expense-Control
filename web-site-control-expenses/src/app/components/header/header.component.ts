@@ -24,6 +24,10 @@ export class HeaderComponent implements OnInit {
     this.perfil = this._authService.getPerfil()
   }
 
+  public logout(){
+    return this._authService.logout()
+  }
+
   public getActualDate(){
     dayjs.locale('es')
     let date = new Date()
