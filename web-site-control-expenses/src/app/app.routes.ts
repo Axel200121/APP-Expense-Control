@@ -5,6 +5,7 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { ProveedoresComponent } from './pages/proveedores/proveedores.component';
 import { GastosFijosComponent } from './pages/gastos-fijos/gastos-fijos.component';
 import { GastosPorDiaComponent } from './pages/gastos-por-dia/gastos-por-dia.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 export const routes: Routes = [
     {
@@ -30,5 +31,9 @@ export const routes: Routes = [
     {
         path:"gastos-por-dia",
         component:GastosPorDiaComponent
+    },
+    {
+        path:"**",
+        component:ErrorComponent
     }
 ];
