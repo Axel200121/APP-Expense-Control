@@ -6,6 +6,7 @@ import { ProveedoresComponent } from './pages/proveedores/proveedores.component'
 import { GastosFijosComponent } from './pages/gastos-fijos/gastos-fijos.component';
 import { GastosPorDiaComponent } from './pages/gastos-por-dia/gastos-por-dia.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { SinAccesoComponent } from './pages/sin-acceso/sin-acceso.component';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,10 @@ export const routes: Routes = [
     {
         path:"gastos-por-dia",
         component:GastosPorDiaComponent
+    },
+    {
+        path:"sin-acceso",
+        component:SinAccesoComponent
     },
     {
         path:"**",
