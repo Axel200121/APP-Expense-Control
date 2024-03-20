@@ -9,11 +9,11 @@ import { ErrorComponent } from './pages/error/error.component';
 
 export const routes: Routes = [
     {
-        path:"",
+        path:"home",
         component:HomeComponent
     },
     {
-        path:"login",
+        path:"",
         component:LoginComponent
     },
     {
