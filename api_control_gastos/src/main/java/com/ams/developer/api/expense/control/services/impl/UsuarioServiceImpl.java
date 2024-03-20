@@ -1,9 +1,6 @@
 package com.ams.developer.api.expense.control.services.impl;
 
-import com.ams.developer.api.expense.control.dto.ApiResponseDto;
-import com.ams.developer.api.expense.control.dto.JwtResponseDto;
-import com.ams.developer.api.expense.control.dto.LoginDto;
-import com.ams.developer.api.expense.control.dto.UsuarioDto;
+import com.ams.developer.api.expense.control.dto.*;
 import com.ams.developer.api.expense.control.mapper.UsuarioMapper;
 import com.ams.developer.api.expense.control.model.EstadosModel;
 import com.ams.developer.api.expense.control.model.PerfilModel;
@@ -132,7 +129,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         try {
             List<UsuariosModel> usuariosModelList = this.usuarioRepository.findAll();
             if (!usuariosModelList.isEmpty()){
-                return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponseDto(HttpStatus.CREATED.value(),"Lista de usuarios",usuariosModelList));
+                List<UsuarioDto> usuariosDtoList = usuariosModelList.stream().map(usuarioMapper::convertToDto).toList();
+                return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponseDto(HttpStatus.CREATED.value(),"Lista de usuarios",usuariosDtoList));
             }else{
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponseDto(HttpStatus.BAD_REQUEST.value(), "NO hay usuarios registrado en la BD"));
             }
