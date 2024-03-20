@@ -21,6 +21,29 @@ export class AuthService {
       window.location.href="/"
     }
   }
+
+
+  public getToken(){
+    return this._cookieService.get('token_expenses_control')
+  }
+
+  public getName(){
+    return this._cookieService.get('name_expenses_control')
+  }
+
+
+  public getIduser(){
+    return this._cookieService.get('idUser_expenses_control')
+  }
+
+  public getIdPerfil(){
+    return this._cookieService.get('idPerfil_expenses_control')
+  }
+
+  public getPerfil(){
+    return this._cookieService.get('perfil_expenses_control')
+  }
+
   
 
   
