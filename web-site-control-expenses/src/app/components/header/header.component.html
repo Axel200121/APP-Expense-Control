@@ -11,7 +11,7 @@
                 </a>
                 <a class="nav-link d-none d-sm-inline-block text-dark">{{getActualDate()}} </a>
                 <a class="nav-link d-none d-sm-inline-block"><span class="text-dark">|</span></a>
-                <a class="nav-link d-none d-sm-inline-block">Hora</a>
+                <a class="nav-link d-none d-sm-inline-block">{{hora | date:'hh:mm:ss' }}</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
