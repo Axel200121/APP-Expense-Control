@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProveedorServiceImpl implements ProveedorService {
@@ -43,7 +44,8 @@ public class ProveedorServiceImpl implements ProveedorService {
         try {
             List<ProveedoresModel> listProveedores = this.proveedorRepository.findAll();
             if (!listProveedores.isEmpty()){
-                return ResponseEntity.status(HttpStatus.OK).body(new ApiResponseDto(HttpStatus.OK.value(),"Lista de proveedores",listProveedores));
+                List<ProveedorDto> proveedorDtoList = listProveedores.stream().map(proveedorMapper::convertToDto).toList();
+                return ResponseEntity.status(HttpStatus.OK).body(new ApiResponseDto(HttpStatus.OK.value(),"Lista de proveedores",proveedorDtoList));
             }else{
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponseDto(HttpStatus.BAD_REQUEST.value(), "No hay registros en la BD"));
             }
